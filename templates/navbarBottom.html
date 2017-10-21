@@ -1,0 +1,125 @@
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarBottom" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbarBottom" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <form class="navbar-form form-inline">
+                <span style="color:gray">Location</span>
+                <div class="btn-group" role="group">
+                  <div class="btn-group dropup" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="font-size:x-small;width:105px">
+                      <span id="startLocationTitle">Start Location</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" id="startLocation" style="max-height:400px;overflow-x:hidden">
+                      <li role="presentation">Choose City</li>
+                        {%for city in cities%}
+                      <li class='startLocation' role="presentation"><a>{{city}}</a></li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+                  <div class="btn-group dropup" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="font-size:x-small;width:100px">
+                      <span id="TemperatureSlider">Max Distance</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="max-height:400px;overflow-x:hidden">
+                      <div style="padding:10px">
+                        <p>
+                          <label for="distanceRange">Max Distance</label>
+                          <input type="text" id="distanceRange" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                        </p>
+                        <div id="sliderDistance"></div>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </form>
+            </li>
+            <li>
+              <form class="navbar-form form-inline">
+                <span style="color:gray">Yelp Rating</span>
+                <div class="btn-group" role="group">
+                  <button id="yelp1" data-original-title="One or more stars." data-placement="top"
+                    type="button" class="btn btn-default glyphicon glyphicon-star" style="font-size:xx-small"></button>
+                  <button id="yelp2" data-original-title="Two or more stars." data-placement="top"
+                    type="button" class="btn btn-default glyphicon glyphicon-star" style="font-size:xx-small"></button>
+                  <button id="yelp3" data-original-title="Three or more stars." data-placement="top"
+                    type="button" class="btn btn-default glyphicon glyphicon-star" style="font-size:xx-small"></button>
+                  <button id="yelp4" data-original-title="Four or more stars." data-placement="top"
+                    type="button" class="btn btn-default glyphicon glyphicon-star" style="font-size:xx-small"></button>
+                  <button id="yelp5" data-original-title="Five stars." data-placement="top"
+                    type="button" class="btn btn-default glyphicon glyphicon-star" style="font-size:xx-small"></button>
+                </div>
+              </form>
+            </li>
+            <li>
+              <form class="navbar-form form-inline">
+                <span style="color:gray">Booking Difficulty</span>
+                <div class="btn-group" role="group">
+                  <button id="booking1" type="button" class="btn btn-default glyphicon glyphicon-tent" style="font-size:xx-small"
+                    data-original-title="Usually space the next weekend." data-placement="top"></button>
+                  <button id="booking2" type="button" class="btn btn-default glyphicon glyphicon-tent" style="font-size:xx-small"
+                    data-original-title="Book a couple of weeks ahead of time." data-placement="top"></button>
+                  <button id="booking3" type="button" class="btn btn-default glyphicon glyphicon-tent" style="font-size:xx-small"
+                    data-original-title="Book a couple of months ahead of time." data-placement="top"></button>
+                  <button id="booking4" type="button" class="btn btn-default glyphicon glyphicon-tent" style="font-size:xx-small"
+                    data-original-title="Book as soon as booking is allowed." data-placement="top"></button>
+                </div>
+              </form>
+            </li>
+            <li>
+              <form class="navbar-form form-inline">
+                <span style="color:gray">Weather</span>
+                <div class="btn-group" role="group">
+                  <div class="btn-group dropup" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="font-size:x-small;width:70px">
+                      <span id="weatherMonthTitle">Month</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="max-height:400px;overflow-x:hidden">
+                      <li><a class="weatherMonth">Jan</a></li>
+                      <li><a class="weatherMonth">Feb</a></li>
+                      <li><a class="weatherMonth">Mar</a></li>
+                      <li><a class="weatherMonth">Apr</a></li>
+                      <li><a class="weatherMonth">May</a></li>
+                      <li><a class="weatherMonth">Jun</a></li>
+                      <li><a class="weatherMonth">Jul</a></li>
+                      <li><a class="weatherMonth">Aug</a></li>
+                      <li><a class="weatherMonth">Sep</a></li>
+                      <li><a class="weatherMonth">Oct</a></li>
+                      <li><a class="weatherMonth">Nov</a></li>
+                      <li><a class="weatherMonth">Dec</a></li>
+                    </ul>
+                  </div>
+                  <div class="btn-group dropup" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="font-size:x-small;width:125px">
+                      <span id="TemperatureSlider">Temperature Range</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="max-height:400px;overflow-x:hidden">
+                      <div style="padding:10px">
+                        <p>
+                          <label for="temperatureRange">Temperature range:</label>
+                          <input type="text" id="temperatureRange" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                        </p>
+                        <div id="slider-range"></div>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </form>
+            </li>
+            <li><button type="button" class="btn btn-default btn-xs" style="font-size:x-small;" id="clearAll">Clear All</button></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>

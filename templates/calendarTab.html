@@ -1,0 +1,36 @@
+<div class="panel col-md-12">
+  <button type="button" class="btn-lg btn-info" style="margin:10px"><a href="http://www.reserveamerica.com/">Campsite Booking</a></button>
+  <h4>Choose a month.</h4>
+  <h5>Loading may take a moment.</h5>
+  <div id="calendarPanel" role="tabpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" style="background:floralwhite"><!--listed months-->
+      <li role="presentation" id='calendarPrev'><a aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:0px 0px 0 0">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a></li><!--the left arrow-->
+      <!--visible month tabs-->
+      {% for month in calendar1 %}
+      <li role="presentation" class="noclick month" id="month{{loop.index}}"><a href="#contentmonth{{loop.index}}" role="tab" data-toggle="tab" style="border-radius:0px">{{month}}</a></li>
+      {% endfor %}
+      <!--invisible month tabs-->
+      {% for month in calendar2 %}
+      <li role="presentation" class="noclick month" id="month{{loop.index+4}}" style="display: None"><a href="#contentmonth{{loop.index+4}}" role="tab" data-toggle="tab" style="border-radius:0px">{{month}}</a></li>
+      {% endfor %}
+      <!--the right arrow-->
+      <li role="presentation" id="calendarNext"><a aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:0px 0px 0 0">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="contentmonth1"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth2"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth3"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth4"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth5"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth6"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth7"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+      <div role="tabpanel" class="tab-pane" id="contentmonth8"><div style="visibility: hidden">{% include 'calendarForTab.html' %}</div></div>
+    </div>
+  </div><!--tabpanel-->
+</div><!--panel-->

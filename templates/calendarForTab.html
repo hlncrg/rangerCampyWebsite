@@ -1,0 +1,24 @@
+<table class="table table-bordered" style="margin-top:10px"> 
+    <thead> 
+      <tr> 
+        <th class="info">Mon</th> 
+        <th class="info">Tue</th> 
+        <th class="info">Wed</th> 
+        <th class="info">Thu</th> 
+        <th class="info">Fri</th> 
+        <th class="info">Sat</th> 
+        <th class="info">Sun</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+      {% for week in range(5) %} 
+        <tr> 
+        {% for day in range(7) %} 
+            <td id="{{week}}-{{day}}"> 
+              <div></div> 
+            </td>
+        {% endfor %} 
+        </tr> 
+      {% endfor %} 
+    </tbody> 
+  </table>

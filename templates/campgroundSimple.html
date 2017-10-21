@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" id={{pageID}}>
+  <head>
+    <meta name="twitter:widgets:csp" content="on">
+    <meta charset="utf-8dd">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Your camping plan!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/css.css') }}" rel="stylesheet">
+</head>
+
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64143818-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    {% include 'navbarSimple.html' %}
+    {% include 'jumbotron.html' %} 
+
+    <!--create tabs-->
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a id="infoTab" href="#info" role="tab" data-toggle="tab">
+        Info
+      </a></li>
+      <li role="presentation"><a id="similarTab" href="#similar" role="tab" data-toggle="tab">
+        Similar
+      </a></li>
+      <li role="presentation"><a id="calendarTab" href="#calendar" role="tab" data-toggle="tab">
+        Calendar
+      </a></li>
+      <li role="presentation"><a id="mapTab" href="#map2" role="tab" data-toggle="tab">
+        Map
+      </a></li>
+      <li role="presentation"><a id="weatherTab" class="unclicked" href="#weather" role="tab" data-toggle="tab">
+        Weather
+      </a></li>
+    </ul>
+    <!--create tabs-->
+
+   <!--create tabs-->
+    <div id="myTabContent" class="tab-content col-md-11">
+      <!--calendar tab-->
+      <div role="tabpanel" class="tab-pane fade" id="calendar">
+      <h3>Calendar will open in new window.</h3>
+      <button type="button" class="btn-lg btn-info"><a href="http://www.reserveamerica.com/">Campsite Booking</a></button>
+      </div>
+      <!--map tab-->
+      <div role="tabpanel" class="tab-pane fade" id="map2"><div class="panel">
+          <div class="row">
+          <div class="col-md-8"><div id="map-canvas" style="width:590px"></div></div>
+          <div class="col-md-2" style="background:white;height: 630px;width:300px;overflow: scroll;border-radius: 0px;border: 2px solid #8AC007;">
+            <div style="padding-top:20px"><table id="nearbyTable" class="table table-striped"><tr><th>Nearby Camping</th></tr></table></div>
+          </div>
+      </div>
+      </div>
+      </div>
+
+
+<div role="tabpanel" class="tab-pane fade" id="similar">
+{% include 'similar.html' %}
+</div>
+
+<div role="tabpanel" class="tab-pane fade active in" id="info">
+  <div class="panel col-md-12">
+    <div class="col-md-6">
+      <div style="padding:25px">
+        <img class="infoPic" src="{{image}}" style="width:304px;height:228px;">
+      </div>
+      <div style="padding:25px">
+        <table class="table table-striped">
+          <tr><th>{{heading}}</tr></th>
+          <tr><td><div class="col-md-4">Yelp Rating:</div><div class="col-md-8">{{yelpRating}}</div></tr></td>
+          <tr><td><div class="col-md-4">Climate:</div><div class="col-md-8">{{climate}}</div></tr></td>
+          <tr><td><div class="col-md-4">Size:</div><div class="col-md-8">{{numSites}} Sites (bookable, non-ADA)</div></tr></td>
+          <tr><td><div class="col-md-4">Bookability:</div><div class="col-md-8">{{booking}}<div></tr></td>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6" style="height: 600px;width:300px;overflow: scroll;border-radius: 0px;border: 2px solid #8AC007;">
+    <h2>Tweets</h2>
+      {% if tweet|length==0%}
+      No recent tweets
+      {% endif %}
+      {% for twit in tweet%} 
+         <blockquote class="twitter-tweet" lang="en" width="300">
+        <a href="{{twit}}"></a>
+        </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<div role="tabpanel" class="tab-pane fade" id="weather">
+<div class="panel">
+<div class="row">
+<div id="chartContainer" class="col-md-8">
+</div>
+<div class="col-md-4" style="height: 600px;width:300px;overflow: scroll;border-radius: 0px;border: 2px solid #8AC007;">
+<h2>Weather This Week</h2>
+<table id="currentWeather" class="table table-striped">
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//rangercampy.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='js/jQuery.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/app.js')}}"></script>
+    <script type=text/javascript>
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+      var pageName='{{name}}';
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  </body>
+</html>

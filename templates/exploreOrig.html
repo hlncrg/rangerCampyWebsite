@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" id="{{pageID}}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Your camping plan!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/css.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+
+  {% include 'navbarSimple.html'%}
+  {% include 'jumbotron.html' %}
+
+  <div class="panel">
+  <div class="row">
+  <div id="map" class="col-md-6"><div id="map-canvas" style="width:500px"></div></div>
+
+  <div class="col-md-6"> 
+  <div class="row" style="margin:10px">
+    <div class="row" style="margin:10px">
+      <div class="col-md-4" style="margin:5px">
+      <input type="checkbox" id="hotPicks" style="margin:5px"/>
+        Hot Picks
+      </div>
+      <div class="col-md-4" style="margin:5px">
+        <input type="checkbox" id="hiddenGems" style="margin:5px"/>
+        Hidden Gems
+      </div>
+    </div>
+
+
+    <div class="btn-group" role="group">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Start Location
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Max Dist
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="btn-group" role="group">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Month
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Min Temp
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Max Temp
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="height:600px;overflow:scroll">
+  <table class="table table-striped">  
+    {% for name in names %}
+      <tr id="{{nameIDs[loop.index0]}}"><td>
+        <div class="row">
+          <div class="col-md-9">
+            <a href="/campgroundSimple/{{nameIDs[loop.index0]}}">
+            <img src="/photos/{{nameIDs[loop.index0]}}" style="width:204px;height:128px;">
+            <h2>{{name}}</h2>
+            </a>
+          </div>
+      </div>
+    </tr></td>
+    {% endfor %}
+  </table>
+  </div>
+  </div>
+</div>
+
+      <hr>
+
+      <footer>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/app.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+  </body>
+</html>

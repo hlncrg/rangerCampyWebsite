@@ -1,0 +1,12 @@
+<div id="jumbotron">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" style="background-image: url({{image}}); height:300px ;text-shadow: 2px 2px grey;background-size: 100% 100%; -webkit-filter: blur(8px);">
+      <div class="container">
+        {% if pageName=='index'%}
+        <p><a class="btn btn-lg btn-primary" href="/explore" role="button">Explore Now! &raquo;</a></p>
+        {% endif %}
+      </div>
+    </div>
+    <!-- end of jumbotron-->
+    <h1 style="position: absolute;left:0;top: 0;padding:50px;text-shadow: 2px 2px grey;">{{heading}}</h1>
+</div>
