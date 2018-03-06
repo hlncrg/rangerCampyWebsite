@@ -1,6 +1,10 @@
 # rangerCampyWebsite
 Files for creating serving the ranger campy website
 
+# To Run
+To run the flask app, 'python application.py'
+
+# Tweets
 For tweets, place credintials in twitterCred.txt
 in the form:
 
@@ -9,4 +13,5 @@ in the form:
 "TOKEN" : "...",
 "TOKEN_SECRET" : "..."}
 
+# Analysis
 See RangerCampy.ipynb for some analysis work of data.
