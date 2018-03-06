@@ -15,3 +15,6 @@ in the form:
 
 # Analysis
 See RangerCampy.ipynb for some analysis work of data.
+
+# Todo
+Make code not break without twitterCred.txt file present
